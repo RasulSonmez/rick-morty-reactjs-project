@@ -1,0 +1,10 @@
+/*FOOTER*/
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: var(--bg-color-one);
+  bottom: 0;
+  padding: 2rem 0;
+}

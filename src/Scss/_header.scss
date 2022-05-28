@@ -1,0 +1,27 @@
+/* HEADER */
+.header {
+  width: 100%;
+  background-color: var(--bg-color-one);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+}
+
+/* NAV */
+
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo {
+    color: var(--color-white);
+    font-size: 1.4rem;
+    font-weight: var(--font-bold);
+    span {
+      color: var(--color-purple);
+    }
+  }
+}
