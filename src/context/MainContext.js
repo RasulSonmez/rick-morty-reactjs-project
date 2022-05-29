@@ -6,10 +6,9 @@ const MainContext = createContext();
 export const MainProvider = ({ children }) => {
   const [episodesData, setEpisodesData] = useState({});
   const [getCharacters, setGetCharacters] = useState([]);
-  const [filterGender, setFilterGender] = useState([]);
-  const [filterStatu, setFilterStatu] = useState([]);
   const [total, setTotal] = useState(51);
   const [episodeID, setEpisodeID] = useState(1);
+
   //api
   const api = {
     base: `https://rickandmortyapi.com/api/episode/${episodeID}`,
@@ -20,7 +19,6 @@ export const MainProvider = ({ children }) => {
     try {
       const episodesResult = await axios.get(`${api.base}`);
       setEpisodesData(episodesResult);
-
       let episodesCharacters = await Promise.all(
         episodesData.data.characters.map((item) => {
           console.log(item);
@@ -35,20 +33,38 @@ export const MainProvider = ({ children }) => {
 
   //filtered by gender
   const filterByGender = (gender) => {
-    let filteredByGenderCharacters = getCharacters.filter(
-      (item) => item.data.gender === gender
-    );
-    console.log(filteredByGenderCharacters);
-    setFilterGender(filteredByGenderCharacters);
+    if (gender) {
+      let filteredByGenderCharacters = getCharacters.filter(
+        (item) => item.data.gender === gender
+      );
+      setGetCharacters(filteredByGenderCharacters);
+    } else return null;
   };
 
   //filtered by statu
   const filterBystatu = (statu) => {
-    let filteredByStatuCharacters = getCharacters.filter(
-      (item) => item.data.status === statu
-    );
+    if (statu) {
+      let filteredByStatuCharacters = getCharacters.filter(
+        (item) => item.data.status === statu
+      );
 
-    setFilterStatu(filteredByStatuCharacters);
+      setGetCharacters(filteredByStatuCharacters);
+    } else {
+      return null;
+    }
+  };
+
+  //sorted characters
+  const sortPlayers = (selectEvent) => {
+    const options = {
+      "a-z": [...getCharacters].sort((a, b) =>
+        a.data.name < b.data.name ? -1 : 1
+      ),
+      "z-a": [...getCharacters].sort((a, b) =>
+        a.data.name < b.data.name ? 1 : -1
+      ),
+    };
+    setGetCharacters(options[selectEvent.target.value]);
   };
 
   useEffect(() => {
@@ -61,10 +77,10 @@ export const MainProvider = ({ children }) => {
     setTotal,
     setEpisodeID,
     getCharacters,
+    setGetCharacters,
     filterByGender,
-    filterGender,
     filterBystatu,
-    filterStatu,
+    sortPlayers,
   };
 
   return <MainContext.Provider value={values}>{children}</MainContext.Provider>;

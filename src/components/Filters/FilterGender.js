@@ -33,7 +33,7 @@ function FilterGender() {
             <li key={index}>
               <label className="filters__gender__radio">
                 <input
-                  type="radio"
+                  type="checkbox"
                   value={genders.gender}
                   onChange={handleChange}
                 />

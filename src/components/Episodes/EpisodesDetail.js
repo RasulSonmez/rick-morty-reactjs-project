@@ -1,12 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useMainContext } from "../../context/MainContext";
 import EpisodeCharacters from "./EpisodeCharacters";
 
-import GenderEpisodesCharacters from "./GenderEpisodesCharacters";
-
 function EpisodesDetail() {
-  const { episodesData, getCharacters, filterGender } = useMainContext();
+  const { episodesData } = useMainContext();
 
   return (
     <>
@@ -35,7 +32,7 @@ function EpisodesDetail() {
           </h3>
         </div>
         {/* get character by episodes */}
-        {getCharacters ? <EpisodeCharacters /> : <GenderEpisodesCharacters />}
+        {<EpisodeCharacters />}
       </div>
     </>
   );
