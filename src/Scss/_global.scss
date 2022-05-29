@@ -46,3 +46,13 @@ img {
   display: grid;
   gap: 1.5rem;
 }
+
+/*--- SCROLL BAR ---*/
+::-webkit-scrollbar {
+  width: 0.6rem;
+  background: var(--color-body);
+
+  &-thumb {
+    background: var(--color-purple);
+  }
+}

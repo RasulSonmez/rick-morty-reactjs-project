@@ -37,6 +37,7 @@
         color: var(--color-purple);
       }
     }
+
     &__card {
       grid-template-columns: repeat(3, 1fr);
       padding: 2rem;
@@ -63,6 +64,23 @@
       &__name {
         font-weight: var(--font-bold);
         margin-bottom: 1rem;
+      }
+      &__status {
+        color: var(--color-white);
+        padding: 1rem;
+        background-color: #97ce4c;
+        border-radius: 50%;
+        height: 10px;
+        width: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--smaller-font-size);
+      }
+      &__location {
+        color: var(--title-color);
+        font-weight: var(--font-semi-bold);
+        line-height: 1.5rem;
       }
       &__button {
         margin-top: 2rem;

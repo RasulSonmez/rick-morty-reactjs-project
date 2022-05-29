@@ -1,6 +1,5 @@
 import React from "react";
-import EpisodesDetail from "./EpisodesDetail";
-import Footer from "./Layout/Footer";
+import EpisodesDetail from "./Episodes/EpisodesDetail";
 
 import Sidebar from "./Sidebar";
 

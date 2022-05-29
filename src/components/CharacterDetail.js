@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 function CharacterDetail() {
-  let [getCharacterDetail, setGetCharacterDetail] = useState([]);
   const { id } = useParams();
-  let api = `https://rickandmortyapi.com/api/character/${id}`;
+  const [getCharacterDetail, setGetCharacterDetail] = useState([]);
+
+  const api = `https://rickandmortyapi.com/api/character/${id}`;
   useEffect(() => {
     const getCharacterById = async () => {
       try {
@@ -14,10 +15,9 @@ function CharacterDetail() {
         console.log(error.message);
       }
     };
+
     getCharacterById();
   }, [api]);
-
-  console.log(getCharacterDetail);
 
   return (
     <>
@@ -25,29 +25,29 @@ function CharacterDetail() {
         <div className="character__detail__card ">
           <div className="character__detail__content">
             <h1 className="character__title">
-              {getCharacterDetail.data
-                ? getCharacterDetail.data.name
+              {getCharacterDetail.data?.name
+                ? getCharacterDetail.data?.name
                 : "Unknown"}
             </h1>
             <img
               src={
-                getCharacterDetail.data
-                  ? getCharacterDetail.data.image
+                getCharacterDetail.data?.image
+                  ? getCharacterDetail.data?.image
                   : "Unknown"
               }
               alt=""
             />
             <div className="character__detail__card__life">
-              {getCharacterDetail.data
-                ? getCharacterDetail.data.status
+              {getCharacterDetail.data?.status
+                ? getCharacterDetail.data?.status
                 : "Unknown"}
             </div>
             <ul>
               <li>
                 Gender:
                 <span>
-                  {getCharacterDetail.data
-                    ? getCharacterDetail.data.gender
+                  {getCharacterDetail.data?.gender
+                    ? getCharacterDetail.data?.gender
                     : "Unknown"}
                 </span>
               </li>
@@ -55,22 +55,26 @@ function CharacterDetail() {
               <li>
                 Location:
                 <span>
-                  {getCharacterDetail.data
-                    ? getCharacterDetail.data.locaiton
+                  {getCharacterDetail.data?.location?.name
+                    ? getCharacterDetail.data?.location?.name
                     : "Unknown"}
                 </span>
               </li>
               <li>
                 Origin:
                 <span>
-                  {getCharacterDetail.data
-                    ? getCharacterDetail.data.origin
+                  {getCharacterDetail.data?.origin?.name
+                    ? getCharacterDetail.data?.origin?.name
                     : "Unknown"}
                 </span>
               </li>
               <li>
                 Species:
-                <span> Human</span>
+                <span>
+                  {getCharacterDetail.data?.species
+                    ? getCharacterDetail.data?.species
+                    : "Unknown"}
+                </span>
               </li>
             </ul>
           </div>

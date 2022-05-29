@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className="footer section ">
       <div className="container">
-        <Link to="/" class="nav__logo">
+        <Link to="/" className="nav__logo">
           Rick And<span> Morty</span>
         </Link>
       </div>

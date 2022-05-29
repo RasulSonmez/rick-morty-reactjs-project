@@ -2,5 +2,6 @@
 .main {
   &__content {
     grid-template-columns: 1fr 5fr;
+    column-gap: 3rem;
   }
 }

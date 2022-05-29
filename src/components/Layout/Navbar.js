@@ -6,8 +6,8 @@ function Navbar() {
     <>
       <header className="header" id="header">
         <nav className="nav container">
-          <Link to="/" class="nav__logo">
-            Rick And<span> Morty</span>
+          <Link to="/" className="nav__logo">
+            Rick And<span> Morty</span> Wiki
           </Link>
         </nav>
       </header>
