@@ -1,4 +1,3 @@
-import React from "react";
 import FilterGender from "./FilterGender";
 import FilterStatus from "./FilterStatus";
 

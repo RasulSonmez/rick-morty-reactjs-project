@@ -7,7 +7,7 @@ function EpisodesDetail() {
 
   return (
     <>
-      <div className="episodes__detail">
+      <div className="episodes__detail ">
         <div className="episodes__detail__top">
           <h1 className="episodes__detail__title">
             Episode name :{" "}

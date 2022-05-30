@@ -1,25 +1,32 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useMainContext } from "../../context/MainContext";
 
 const status = [{ statu: "Alive" }, { statu: "Dead" }, { statu: "Unknown" }];
 
 function FilterStatus() {
   const [statu, setStatu] = useState(status);
-  const { filterBystatu } = useMainContext();
+  const { setGetCharacters, allCharacters } = useMainContext();
 
+  //filtered by statu
+  const filterByStatu = (statu) => {
+    let filteredByStatuCharacters = allCharacters.filter(
+      (item) => item.data.status === statu
+    );
+    console.log(filteredByStatuCharacters);
+    setGetCharacters(filteredByStatuCharacters);
+  };
+
+  //input handle change
   const handleChange = (e) => {
     if (e.target.checked) {
       setStatu(e.target.value);
-      filterBystatu(e.target.value);
+      filterByStatu(e.target.value);
     } else {
-      setStatu(statu.filter((id) => id !== e.target.value));
+      setStatu(statu.filter((item) => item !== e.target.value));
     }
   };
 
-  useEffect(() => {
-    filterBystatu();
-  }, [status]);
   return (
     <div>
       <aside className="filters__status">
@@ -29,9 +36,10 @@ function FilterStatus() {
             <li key={index}>
               <label className="filters__status__radio">
                 <input
-                  type="checkbox"
+                  type="radio"
+                  name="status"
                   value={status.statu}
-                  onChange={handleChange}
+                  onClick={handleChange}
                 />
                 <span className="filters__status__radio__text">
                   {status.statu}

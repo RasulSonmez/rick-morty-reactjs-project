@@ -6,6 +6,7 @@ const MainContext = createContext();
 export const MainProvider = ({ children }) => {
   const [episodesData, setEpisodesData] = useState({});
   const [getCharacters, setGetCharacters] = useState([]);
+  const [allCharacters, setAllCharacters] = useState([]);
   const [total, setTotal] = useState(51);
   const [episodeID, setEpisodeID] = useState(1);
 
@@ -19,43 +20,22 @@ export const MainProvider = ({ children }) => {
     try {
       const episodesResult = await axios.get(`${api.base}`);
       setEpisodesData(episodesResult);
-      let episodesCharacters = await Promise.all(
-        episodesData.data.characters.map((item) => {
-          console.log(item);
+
+      let getCharactersByEpisodes = await Promise.all(
+        episodesResult.data.characters.map((item) => {
           return axios.get(item);
         })
       );
-      setGetCharacters(episodesCharacters);
+
+      setGetCharacters(getCharactersByEpisodes);
+      setAllCharacters(getCharactersByEpisodes);
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  //filtered by gender
-  const filterByGender = (gender) => {
-    if (gender) {
-      let filteredByGenderCharacters = getCharacters.filter(
-        (item) => item.data.gender === gender
-      );
-      setGetCharacters(filteredByGenderCharacters);
-    } else return null;
-  };
-
-  //filtered by statu
-  const filterBystatu = (statu) => {
-    if (statu) {
-      let filteredByStatuCharacters = getCharacters.filter(
-        (item) => item.data.status === statu
-      );
-
-      setGetCharacters(filteredByStatuCharacters);
-    } else {
-      return null;
-    }
-  };
-
   //sorted characters
-  const sortPlayers = (selectEvent) => {
+  const sortCharacters = (selectEvent) => {
     const options = {
       "a-z": [...getCharacters].sort((a, b) =>
         a.data.name < b.data.name ? -1 : 1
@@ -78,9 +58,8 @@ export const MainProvider = ({ children }) => {
     setEpisodeID,
     getCharacters,
     setGetCharacters,
-    filterByGender,
-    filterBystatu,
-    sortPlayers,
+    sortCharacters,
+    allCharacters,
   };
 
   return <MainContext.Provider value={values}>{children}</MainContext.Provider>;

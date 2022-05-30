@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useMainContext } from "../../context/MainContext";
 const genders = [
   { gender: "Male" },
@@ -9,20 +9,25 @@ const genders = [
 
 function FilterGender() {
   const [gender, setGender] = useState(genders);
-  const { filterByGender } = useMainContext();
+  const { setGetCharacters, allCharacters } = useMainContext();
 
+  //filtered by gender
+  const filterByGender = (gender) => {
+    let filteredByGenderCharacters = allCharacters.filter(
+      (item) => item.data.gender === gender
+    );
+    setGetCharacters(filteredByGenderCharacters);
+  };
+
+  //input handle change
   const handleChange = (e) => {
     if (e.target.checked) {
       setGender(e.target.value);
       filterByGender(e.target.value);
     } else {
-      setGender(gender.filter((id) => id !== e.target.value));
+      setGender(gender.filter((item) => item !== e.target.value));
     }
   };
-
-  useEffect(() => {
-    filterByGender();
-  }, [genders]);
 
   return (
     <div>
@@ -33,9 +38,10 @@ function FilterGender() {
             <li key={index}>
               <label className="filters__gender__radio">
                 <input
-                  type="checkbox"
+                  type="radio"
+                  name="gender"
                   value={genders.gender}
-                  onChange={handleChange}
+                  onClick={handleChange}
                 />
                 <span className="filters__gender__radio__text">
                   {genders.gender}

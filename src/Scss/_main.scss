@@ -1,7 +1,8 @@
 /* MAİN */
 .main {
+  margin-left: 1rem;
+  margin-right: 1rem;
   &__content {
     grid-template-columns: 1fr 5fr;
-    column-gap: 3rem;
   }
 }
