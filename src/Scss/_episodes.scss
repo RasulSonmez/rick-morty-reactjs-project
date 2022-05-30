@@ -83,7 +83,7 @@
       &__button {
         margin-top: 2rem;
         width: 100%;
-        background: #444ce9;
+        background: #f0e14a;
         height: 53px;
         display: flex;
         align-items: center;
@@ -92,7 +92,7 @@
         color: #fff;
         transition: 300ms all;
         &:hover {
-          background: darken(#444ce9, 5%);
+          background: darken(#f0e14a, 10%);
         }
       }
     }

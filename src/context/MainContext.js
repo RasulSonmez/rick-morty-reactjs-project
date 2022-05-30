@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 
 const MainContext = createContext();
-// create Provider
+
 export const MainProvider = ({ children }) => {
   const [episodesData, setEpisodesData] = useState({});
   const [getCharacters, setGetCharacters] = useState([]);

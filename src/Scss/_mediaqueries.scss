@@ -1,11 +1,29 @@
 /* MEDIA QUERIES */
-@media screen and (max-width: 1200px) {
-}
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 968px) {
+  .episodes__detail {
+    &__card__wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 }
 @media screen and (max-width: 768px) {
+  .episodes__detail {
+    &__card__wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+  .episodes__filter {
+    &__top {
+      grid-template-columns: 1fr;
+    }
+  }
 }
 
 @media screen and (max-width: 576px) {
+  .main {
+    &__content {
+      grid-template-columns: 1fr;
+    }
+  }
 }

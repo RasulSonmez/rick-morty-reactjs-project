@@ -10,7 +10,7 @@ function EpisodeCharacters() {
   //search characters
   const searchItems = (searchValue) => {
     setSearchInput(searchValue);
-    if (searchInput.length !== "null") {
+    if (searchInput.length !== "") {
       const filteredData = getCharacters.filter((item) => {
         return Object.values(item.data.name)
           .join("")
@@ -18,17 +18,13 @@ function EpisodeCharacters() {
           .includes(searchInput.toLowerCase());
       });
       setFilteredResults(filteredData);
-    }
-    if (searchInput === " ") {
-      alert("Name must be filled out..");
-      return false;
     } else {
       setFilteredResults(getCharacters);
     }
   };
 
   return (
-    <div>
+    <div className="episodes__filter grid">
       <div className="episodes__filter__top">
         <div className="episodes__filterAz">
           <select onChange={sortCharacters}>

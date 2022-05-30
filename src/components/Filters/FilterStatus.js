@@ -1,17 +1,13 @@
 import React from "react";
-import { useState } from "react";
 import { useMainContext } from "../../context/MainContext";
 
-const status = [{ statu: "Alive" }, { statu: "Dead" }, { statu: "Unknown" }];
-
-function FilterStatus() {
-  const [statu, setStatu] = useState(status);
+function FilterStatus({ statu, setStatu, status, gender }) {
   const { setGetCharacters, allCharacters } = useMainContext();
 
   //filtered by statu
   const filterByStatu = (statu) => {
     let filteredByStatuCharacters = allCharacters.filter(
-      (item) => item.data.status === statu
+      (item) => item.data.status === statu || item.data.gender === gender
     );
     console.log(filteredByStatuCharacters);
     setGetCharacters(filteredByStatuCharacters);

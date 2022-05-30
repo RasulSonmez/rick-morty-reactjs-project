@@ -13,15 +13,15 @@
 .nav {
   height: var(--header-height);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
   &__logo {
     color: var(--color-white);
     font-size: 1.4rem;
     font-weight: var(--font-bold);
-    span {
-      color: var(--color-purple);
+    img {
+      height: 4rem;
     }
   }
 }

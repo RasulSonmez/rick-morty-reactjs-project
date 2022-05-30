@@ -1,20 +1,12 @@
-import { useState } from "react";
 import { useMainContext } from "../../context/MainContext";
-const genders = [
-  { gender: "Male" },
-  { gender: "Female" },
-  { gender: "unknown" },
-  { gender: "Genderless" },
-];
 
-function FilterGender() {
-  const [gender, setGender] = useState(genders);
+function FilterGender({ gender, setGender, genders, statu }) {
   const { setGetCharacters, allCharacters } = useMainContext();
 
   //filtered by gender
   const filterByGender = (gender) => {
     let filteredByGenderCharacters = allCharacters.filter(
-      (item) => item.data.gender === gender
+      (item) => item.data.gender === gender || item.data.status === statu
     );
     setGetCharacters(filteredByGenderCharacters);
   };
