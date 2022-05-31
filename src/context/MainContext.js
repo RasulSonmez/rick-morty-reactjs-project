@@ -28,7 +28,6 @@ export const MainProvider = ({ children }) => {
           return axios.get(item);
         })
       );
-
       setGetCharacters(getCharactersByEpisodes);
       setAllCharacters(getCharactersByEpisodes);
     } catch (error) {
@@ -43,7 +42,7 @@ export const MainProvider = ({ children }) => {
   const values = {
     episodesData,
     totalEpisodes,
-
+    setTotalEpisodes,
     setEpisodeID,
     getCharacters,
     setGetCharacters,

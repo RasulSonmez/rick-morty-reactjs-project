@@ -1,16 +1,18 @@
 //context
 import { useMainContext } from "../../context/MainContext";
 
-function FilterGender({ gender, setGender, genders, statu }) {
+function FilterGender({ gender, setGender, genders, statu, setStatu }) {
   const { setGetCharacters, allCharacters } = useMainContext();
 
   //filtered by gender
   const filterByGender = (gender) => {
-    let filteredByGenderCharacters = allCharacters.filter(
-      (item) =>
-        (item.data.gender === gender && item.data.status === statu) ||
-        item.data.gender === gender
-    );
+    let filteredByGenderCharacters = allCharacters.filter((item) => {
+      if (gender !== null) {
+        return item.data.gender === gender && item.data.status === statu;
+      } else {
+        return item.data.gender === gender;
+      }
+    });
     setGetCharacters(filteredByGenderCharacters);
   };
 
@@ -19,8 +21,6 @@ function FilterGender({ gender, setGender, genders, statu }) {
     if (e.target.checked) {
       setGender(e.target.value);
       filterByGender(e.target.value);
-    } else {
-      setGender(gender.filter((item) => item !== e.target.value));
     }
   };
 
