@@ -13,7 +13,6 @@
 - Node Sass
 - Axios
 - React Router Dom
-- Axios
 - React Icons
 
 ## How it Look ?
