@@ -6,7 +6,9 @@ function FilterGender({ gender, setGender, genders, statu }) {
   //filtered by gender
   const filterByGender = (gender) => {
     let filteredByGenderCharacters = allCharacters.filter(
-      (item) => item.data.gender === gender || item.data.status === statu
+      (item) =>
+        (item.data.gender === gender && item.data.status === statu) ||
+        item.data.gender === gender
     );
     setGetCharacters(filteredByGenderCharacters);
   };
