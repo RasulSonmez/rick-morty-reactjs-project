@@ -4,6 +4,8 @@
 
 - REACT JS
 - REACT CONTEXT API
+- REACT ROUTER DOM
+- AXİOS
 - SASS
 
 ## Dependencies
