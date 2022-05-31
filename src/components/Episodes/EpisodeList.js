@@ -1,6 +1,7 @@
+//context
 import { useMainContext } from "../../context/MainContext";
 function EpisodeList() {
-  const { total, setEpisodeID } = useMainContext();
+  const { totalEpisodes, setEpisodeID } = useMainContext();
 
   return (
     <div className="episodes section">
@@ -11,8 +12,10 @@ function EpisodeList() {
             onChange={(e) => setEpisodeID(e.target.value)}
             className="form-select"
           >
+            {/* Listing Episodes */}
+
             <option value="1">Choose...</option>
-            {[...Array(total).keys()].map((x, index) => {
+            {[...Array(totalEpisodes).keys()].map((x, index) => {
               return (
                 <option key={index} value={x + 1}>
                   Episode - {x + 1}

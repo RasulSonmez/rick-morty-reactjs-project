@@ -5,6 +5,7 @@ function CharacterDetail() {
   const { id } = useParams();
   const [getCharacterDetail, setGetCharacterDetail] = useState([]);
 
+  //fetch characters from api by id
   const api = `https://rickandmortyapi.com/api/character/${id}`;
   useEffect(() => {
     const getCharacterById = async () => {

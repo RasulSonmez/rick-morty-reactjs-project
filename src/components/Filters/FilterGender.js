@@ -1,3 +1,4 @@
+//context
 import { useMainContext } from "../../context/MainContext";
 
 function FilterGender({ gender, setGender, genders, statu }) {
@@ -28,6 +29,7 @@ function FilterGender({ gender, setGender, genders, statu }) {
       <aside className="filters__gender">
         <h3>Gender</h3>
         <ul>
+          {/* genders maping */}
           {genders.map((genders, index) => (
             <li key={index}>
               <label className="filters__gender__radio">

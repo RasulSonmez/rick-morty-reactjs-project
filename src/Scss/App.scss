@@ -1,12 +1,12 @@
 /* Import of partial files  */
-@import "variables";
-@import "resetCss";
-@import "global";
-@import "header";
-@import "main";
-@import "sidebar";
-@import "episodes";
-@import "character";
-@import "filters";
-@import "mediaqueries";
-@import "footer";
+@import "./config/variables";
+@import "./helper/resetCss";
+@import "./helper/global";
+@import "./components/header";
+@import "./components/main";
+@import "./components/sidebar";
+@import "./components/episodes";
+@import "./components/character";
+@import "./components/filters";
+@import "./components/mediaqueries";
+@import "./components/footer";

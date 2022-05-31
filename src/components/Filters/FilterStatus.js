@@ -1,4 +1,5 @@
 import React from "react";
+//context
 import { useMainContext } from "../../context/MainContext";
 
 function FilterStatus({ statu, setStatu, status, gender }) {

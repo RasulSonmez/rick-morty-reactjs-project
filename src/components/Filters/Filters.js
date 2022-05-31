@@ -1,8 +1,10 @@
+import { useState } from "react";
+//components
 import FilterGender from "./FilterGender";
 import FilterStatus from "./FilterStatus";
-import { useState } from "react";
 
 function Filters() {
+  //statu and genders array
   const status = [{ statu: "Alive" }, { statu: "Dead" }, { statu: "Unknown" }];
   const genders = [
     { gender: "Male" },

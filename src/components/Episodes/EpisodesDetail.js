@@ -1,5 +1,7 @@
 import React from "react";
+//context
 import { useMainContext } from "../../context/MainContext";
+//components
 import EpisodeCharacters from "./EpisodeCharacters";
 
 function EpisodesDetail() {
@@ -7,6 +9,7 @@ function EpisodesDetail() {
 
   return (
     <>
+      {/* get episodes details */}
       <div className="episodes__detail ">
         <div className="episodes__detail__top">
           <h1 className="episodes__detail__title">

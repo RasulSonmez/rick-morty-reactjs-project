@@ -1,6 +1,6 @@
 import React from "react";
+//components
 import EpisodesDetail from "./Episodes/EpisodesDetail";
-
 import Sidebar from "./Sidebar";
 
 function Main() {

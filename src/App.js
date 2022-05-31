@@ -1,4 +1,4 @@
-import "./Scss/App.scss";
+import "./SCSS/App.scss";
 import { MainProvider } from "./context/MainContext";
 import { Routes, Route } from "react-router-dom";
 //components

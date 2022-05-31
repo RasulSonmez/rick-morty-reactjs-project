@@ -7,7 +7,9 @@ export const MainProvider = ({ children }) => {
   const [episodesData, setEpisodesData] = useState({});
   const [getCharacters, setGetCharacters] = useState([]);
   const [allCharacters, setAllCharacters] = useState([]);
-  const [total, setTotal] = useState(51);
+  const [searchInput, setSearchInput] = useState("");
+  const [filteredResults, setFilteredResults] = useState([]);
+  const [totalEpisodes, setTotalEpisodes] = useState(51);
   const [episodeID, setEpisodeID] = useState(1);
 
   //api
@@ -15,7 +17,7 @@ export const MainProvider = ({ children }) => {
     base: `https://rickandmortyapi.com/api/episode/${episodeID}`,
   };
 
-  //get by episdeos by and characters of episodes
+  //fetch chapters and their characters
   const getEpisodesById = async () => {
     try {
       const episodesResult = await axios.get(`${api.base}`);
@@ -34,32 +36,22 @@ export const MainProvider = ({ children }) => {
     }
   };
 
-  //sorted characters
-  const sortCharacters = (selectEvent) => {
-    const options = {
-      "a-z": [...getCharacters].sort((a, b) =>
-        a.data.name < b.data.name ? -1 : 1
-      ),
-      "z-a": [...getCharacters].sort((a, b) =>
-        a.data.name < b.data.name ? 1 : -1
-      ),
-    };
-    setGetCharacters(options[selectEvent.target.value]);
-  };
-
   useEffect(() => {
     getEpisodesById();
   }, [episodeID]);
 
   const values = {
     episodesData,
-    total,
-    setTotal,
+    totalEpisodes,
+
     setEpisodeID,
     getCharacters,
     setGetCharacters,
-    sortCharacters,
     allCharacters,
+    filteredResults,
+    setFilteredResults,
+    searchInput,
+    setSearchInput,
   };
 
   return <MainContext.Provider value={values}>{children}</MainContext.Provider>;

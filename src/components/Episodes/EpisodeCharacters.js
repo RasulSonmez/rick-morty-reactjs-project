@@ -1,48 +1,23 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+//context
 import { useMainContext } from "../../context/MainContext";
+//components
+import SearchBar from "../Filters/SearchBar";
+import SortCharacters from "../Filters/SortCharacters";
 
 function EpisodeCharacters() {
-  const [searchInput, setSearchInput] = useState("");
-  const [filteredResults, setFilteredResults] = useState([]);
-  const { getCharacters, sortCharacters } = useMainContext();
-
-  //search characters
-  const searchItems = (searchValue) => {
-    setSearchInput(searchValue);
-    if (searchInput.length !== "") {
-      const filteredData = getCharacters.filter((item) => {
-        return Object.values(item.data.name)
-          .join("")
-          .toLowerCase()
-          .includes(searchInput.toLowerCase());
-      });
-      setFilteredResults(filteredData);
-    } else {
-      setFilteredResults(getCharacters);
-    }
-  };
+  const { getCharacters, searchInput, filteredResults } = useMainContext();
 
   return (
     <div className="episodes__filter grid">
       <div className="episodes__filter__top">
-        <div className="episodes__filterAz">
-          <select onChange={sortCharacters}>
-            <option value="a-z">Sort By:</option>
-            <option value="a-z">Name, A to Z</option>
-            <option value="z-a">Name, Z to A</option>
-          </select>
-        </div>
-        <div>
-          <input
-            className="search"
-            type="search"
-            placeholder="Search.."
-            onChange={(e) => searchItems(e.target.value)}
-          />
-        </div>
+        {/* Sort Characters */}
+        <SortCharacters />
+        {/* Search Characters */}
+        <SearchBar />
       </div>
       <div className="episodes__detail__card__wrapper grid">
+        {/* Show search characters */}
         {searchInput.length > 1
           ? filteredResults.map((item) => {
               return (
@@ -81,7 +56,8 @@ function EpisodeCharacters() {
                 </div>
               );
             })
-          : getCharacters.map((item) => {
+          : // show default characters
+            getCharacters.map((item) => {
               return (
                 <div key={item.data.id}>
                   <Link
