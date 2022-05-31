@@ -7,24 +7,27 @@ function FilterStatus({ statu, setStatu, status, gender }) {
 
   //filtered by statu
   const filterByStatu = (statu) => {
-    let filteredByStatuCharacters = allCharacters.filter((item) => {
-      if (statu !== null) {
-        return item.data.status === statu && item.data.gender === gender;
-      } else {
-        return item.data.status === statu;
-      }
-    });
-
-    setGetCharacters(filteredByStatuCharacters);
+    let filteredByStatuCharacters = allCharacters;
+    if (statu !== null && gender !== null && gender.length !== 4) {
+      filteredByStatuCharacters = allCharacters.filter(
+        (item) => item.data.status === statu && item.data.gender === gender
+      );
+      setGetCharacters(filteredByStatuCharacters);
+    } else if (statu !== null) {
+      filteredByStatuCharacters = allCharacters.filter(
+        (item) => item.data.status === statu
+      );
+      setGetCharacters(filteredByStatuCharacters);
+    }
   };
 
   //input handle change
   const handleChange = (e) => {
-    if (e.target.checked) {
+    if (e.target) {
       setStatu(e.target.value);
       filterByStatu(e.target.value);
     } else {
-      setStatu(statu.filter((item) => item !== e.target.value));
+      setStatu(statu.filter((item) => item === e.target.value));
     }
   };
 

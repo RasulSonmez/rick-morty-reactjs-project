@@ -7,7 +7,7 @@ import SortCharacters from "../Filters/SortCharacters";
 import EpisodeCharactersSearchResult from "./EpisodeCharactersSearchResult";
 
 function EpisodeCharacters() {
-  const { getCharacters, searchInput } = useMainContext();
+  const { getCharacters, searchInput, loading } = useMainContext();
 
   return (
     <div className="episodes__filter grid">
@@ -22,8 +22,9 @@ function EpisodeCharacters() {
       <div className="episodes__detail__card__wrapper grid">
         {searchInput.length > 1 ? (
           <EpisodeCharactersSearchResult />
-        ) : (
+        ) : loading ? (
           // show default characters
+
           getCharacters.map((item) => {
             return (
               <div key={item.data.id}>
@@ -58,6 +59,8 @@ function EpisodeCharacters() {
               </div>
             );
           })
+        ) : (
+          <p className="loader"></p>
         )}
       </div>
     </div>

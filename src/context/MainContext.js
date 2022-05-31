@@ -7,6 +7,7 @@ export const MainProvider = ({ children }) => {
   const [episodesData, setEpisodesData] = useState({});
   const [getCharacters, setGetCharacters] = useState([]);
   const [allCharacters, setAllCharacters] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState("");
   const [filteredResults, setFilteredResults] = useState([]);
   const [totalEpisodes, setTotalEpisodes] = useState(51);
@@ -30,6 +31,7 @@ export const MainProvider = ({ children }) => {
       );
       setGetCharacters(getCharactersByEpisodes);
       setAllCharacters(getCharactersByEpisodes);
+      setLoading(true);
     } catch (error) {
       console.log(error.message);
     }
@@ -51,6 +53,7 @@ export const MainProvider = ({ children }) => {
     setFilteredResults,
     searchInput,
     setSearchInput,
+    loading,
   };
 
   return <MainContext.Provider value={values}>{children}</MainContext.Provider>;
